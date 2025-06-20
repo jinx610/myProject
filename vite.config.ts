@@ -1,7 +1,7 @@
 import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
 
-export default ({ mode }) => {
+export default ({ mode }: {mode: string}) => {
   // 加载对应环境变量文件，mode 是 'development' 或 'production'
   const env = loadEnv(mode, process.cwd(), '')
 
