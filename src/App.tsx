@@ -8,7 +8,7 @@ function App() {
 
   const ask = async () => {
     try {
-      const data = await testPing();
+      const data = await testPing(question);
       setAnswer(data.answer);
     } catch (error) {
       console.error('出错了', error);
