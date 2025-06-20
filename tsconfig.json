@@ -9,6 +9,8 @@
     "noUnusedLocals": false,
     "strict": false,
     "skipLibCheck": true,
-    "allowJs": true
+    "allowJs": true,
+    "noImplicitAny": false,
+
   }
 }
