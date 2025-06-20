@@ -6,3 +6,10 @@ export async function sendChat(question: string) {
   })
   return res.json()
 }
+
+export async function testPing() {
+  const res = await fetch('/api/ping', {
+    headers: { 'Content-Type': 'application/json' }
+  })
+  return res.json()
+}

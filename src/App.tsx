@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-import { sendChat } from './api';
+import { sendChat, testPing } from './api';
 
 function App() {
   const [question, setQuestion] = useState('')
@@ -8,7 +8,7 @@ function App() {
 
   const ask = async () => {
     try {
-      const data = await sendChat(question);
+      const data = await testPing();
       setAnswer(data.answer);
     } catch (error) {
       console.error('出错了', error);

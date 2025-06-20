@@ -1,15 +1,18 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-export default defineConfig({
+const backendUrl = process.env.VITE_BACKEND_URL
+
+export default defineConfig(({ mode }) => ({
   plugins: [react()],
   server: {
-    proxy: {
+    proxy: mode === 'development' && backendUrl ? {
       '/api': {
-        target: 'http://localhost:5000', // 后端地址
+        target: backendUrl,
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ''), // 去掉 "/api"
-      },
-    },
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      }
+    } : undefined,
   },
-})
+  base: mode === 'production' && backendUrl ? backendUrl + '/' : '/',
+}))
